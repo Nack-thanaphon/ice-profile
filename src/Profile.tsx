@@ -7,7 +7,9 @@ import {
   FaPaintBrush,
   FaUserAlt,
   FaLightbulb,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 interface ContactInfo {
   email: string;
@@ -46,16 +48,36 @@ const textContent: Record<string, Content> = {
     name: "Thunyapond Sukthahin",
     subtitle: "Hi! My name is Iceya. Hit me up and I’ll be happy to help with your design ideas!",
     address: "Bangkok, Thailand",
-    dob: "D.O.B: 01/02/1993",
+    dob: "01/02/1993",
     contact: {
       email: "t.thunyapond@gmail.com",
       phone: "089-927-6462",
     },
     education: "Bachelor of Visual Communication Design, Rangsit University (2011–2015)",
     skills: [
+      // Layout & Composition
+      // { name: "Layout Design", rating: 4 },
+      // { name: "Grid Systems", rating: 4 },
+      // { name: "Typography", rating: 4 },
+      // { name: "Visual Hierarchy", rating: 4 },
+
+      // Design Software
       { name: "Photoshop", rating: 3 },
       { name: "Illustrator", rating: 4 },
-      { name: "InDesign", rating: 2 },
+      { name: "InDesign", rating: 3 },
+      { name: "Figma", rating: 3 },
+
+      // Visual Design
+      { name: "Color Theory", rating: 4 },
+      { name: "Composition", rating: 4 },
+      // { name: "UI/UX Design", rating: 3 },
+      { name: "Brand Identity", rating: 4 },
+
+      // Media
+      { name: "Photography", rating: 3 },
+      { name: "Digital Publishing", rating: 3 },
+      { name: "Print Design", rating: 4 },
+      { name: "Social Media", rating: 3 }
     ],
     languages: [
       { name: "Thai", level: "Native" },
@@ -99,61 +121,60 @@ const textContent: Record<string, Content> = {
     ],
   },
   th: {
-    name: "Thunyapond Sukthahin",
-    subtitle: "Hi! My name is Iceya. Hit me up and I’ll be happy to help with your design ideas!",
-    address: "Bangkok, Thailand",
-    dob: "D.O.B: 01/02/1993",
+    name: "ธันยพร สุขท่าหิน",
+    subtitle: "สวัสดีค่ะ ฉันชื่อไอซ์ยา ติดต่อมาได้เลยนะคะ ยินดีช่วยเหลือเรื่องไอเดียการออกแบบค่ะ!",
+    address: "กรุงเทพมหานคร, ประเทศไทย",
+    dob: "01/02/2536",
     contact: {
       email: "t.thunyapond@gmail.com",
       phone: "089-927-6462",
     },
-    education: "Bachelor of Visual Communication Design, Rangsit University (2011–2015)",
+    education: "ปริญญาตรี นิเทศศิลป์ มหาวิทยาลัยรังสิต (2554-2558)",
     skills: [
-      { name: "Photoshop", rating: 3 },
-      { name: "Illustrator", rating: 4 },
-      { name: "InDesign", rating: 2 },
+      { name: "Lightroom", rating: 3 },
+      { name: "Photography", rating: 3 }
     ],
     languages: [
-      { name: "Thai", level: "Native" },
-      { name: "English", level: "Basic" },
-      { name: "Japanese", level: "Learning" },
+      { name: "ไทย", level: "ภาษาแม่" },
+      { name: "อังกฤษ", level: "พื้นฐาน" },
+      { name: "ญี่ปุ่น", level: "กำลังเรียนรู้" },
     ],
-    hobbies: ["Playing with cats", "Planting", "Cooking", "Enjoying cocoa"],
-    abilities: ["Empathy", "Creativity", "Positive Attitude", "Teamwork"],
+    hobbies: ["เล่นกับแมว", "ปลูกต้นไม้", "ทำอาหาร", "ดื่มโกโก้"],
+    abilities: ["เข้าอกเข้าใจผู้อื่น", "ความคิดสร้างสรรค์", "ทัศนคติเชิงบวก", "การทำงานเป็นทีม"],
     experience: [
       {
-        title: "Graphic Designer – Stylist",
-        company: "Amarin Corporations",
-        location: "Taling Chan",
-        period: "Apr 2023 – Present",
+        title: "นักออกแบบกราฟิก – สไตลิสต์",
+        company: "อมรินทร์ คอร์ปอเรชั่น",
+        location: "ตลิ่งชัน",
+        period: "เม.ย. 2566 – ปัจจุบัน",
         responsibilities: [
-          "Designing event graphics in collaboration with the structural designer.",
-          "Create key visual designs and corporate identity elements for organizing the event.",
-          "Fashion stylist / Food stylist / Room stylist.",
+          "ออกแบบกราฟิกสำหรับอีเวนต์ ร่วมกับดีไซเนอร์โครงสร้าง",
+          "สร้างคีย์วิชวลและอัตลักษณ์องค์กรสำหรับการจัดงาน",
+          "สไตลิสต์แฟชั่น / สไตลิสต์อาหาร / สไตลิสต์ห้อง",
         ],
       },
       {
-        title: "Graphic Designer",
-        company: "Montivory",
-        location: "Sathon",
-        period: "Aug 2018 – Oct 2022",
+        title: "นักออกแบบกราฟิก",
+        company: "มอนติวอรี่",
+        location: "สาทร",
+        period: "ส.ค. 2561 – ต.ค. 2565",
         responsibilities: [
-          "Infographics, stationery, banners.",
-          "Create design posts on social media.",
-          "Coordinate projects and internal events.",
+          "อินโฟกราฟิก เครื่องเขียน ป้ายแบนเนอร์",
+          "สร้างคอนเทนต์ดีไซน์บนโซเชียลมีเดีย",
+          "ประสานงานโปรเจกต์และอีเวนต์ภายใน",
         ],
       },
       {
-        title: "Digital Media Graphic Designer",
-        company: "Sirimedia",
-        location: "Sathon",
-        period: "Oct 2015 – Aug 2018",
+        title: "นักออกแบบกราฟิกสื่อดิจิทัล",
+        company: "ศิริมีเดีย",
+        location: "สาทร",
+        period: "ต.ค. 2558 – ส.ค. 2561",
         responsibilities: [
-          "Design e-magazines and product interactive catalog for tablet and mobile.",
+          "ออกแบบนิตยสารอิเล็กทรอนิกส์และแคตตาล็อกสินค้าแบบอินเตอร์แอคทีฟสำหรับแท็บเล็ตและมือถือ",
         ],
       },
     ],
-  },
+  }
 };
 
 const Profile: React.FC = () => {
@@ -167,11 +188,36 @@ const Profile: React.FC = () => {
 
   return (
     <div className="max-w-3xl mx-auto font-sans bg-white space-y-10 py-10 p-3 rounded-lg">
-      <div className="text-right">
-        <button onClick={toggleLanguage} className="text-blue-500">
-          {language === "en" ? "ภาษาไทย" : "English"}
-        </button>
+      <div className="flex justify-between">
+        <motion.div
+          className="bg-blue-300 hover:bg-blue-400 p-2 rounded-[10px] inline-block cursor-pointer"
+          animate={{
+            y: [-2, 2, -2],
+            transition: {
+              repeat: Infinity,
+              duration: 0.8,
+              ease: "easeInOut"
+            }
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <a target="_blank" href="https://www.canva.com/design/DAGNvCSxQlE/1A-jsiWoC4HKNdPZUrtX6Q/view?utm_content=DAGNvCSxQlE&utm_campaign=designshare&utm_medium=link&utm_source=editor#2" className="flex items-center space-x-2">
+            <span>Portfolio</span>
+            <FaExternalLinkAlt size={14} />
+          </a>
+        </motion.div>
+        <div className="text-right">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleLanguage}
+            className="text-blue-500"
+          >
+            {language === "en" ? "ภาษาไทย" : "English"}
+          </motion.button>
+        </div>
       </div>
+
 
       {/* Profile Header */}
       <div className="text-center">
@@ -181,9 +227,9 @@ const Profile: React.FC = () => {
           className="w-48 h-48 object-cover rounded-full mx-auto"
         />
         <h1 className="text-4xl font-bold text-gray-800 mt-4">{content.name}</h1>
-        <p className="text-gray-600 mt-2">{content.subtitle}</p>
+        {/* <p className="text-gray-600 mt-2">{content.subtitle}</p> */}
         <p className="mt-2 text-gray-600">{content.address}</p>
-        <p className="mt-2 text-gray-600">{content.dob}</p>
+        <b className="mt-2 text-gray-600">{content.dob}</b>
         <p className="mt-2 text-gray-600 flex items-center justify-center">
           <FaPhone className="mr-2" />
           <a href={`tel:${content.contact.phone}`} className="text-blue-500">
@@ -214,9 +260,7 @@ const Profile: React.FC = () => {
         </h2>
         <ul className="list-disc list-inside mt-2 text-gray-600">
           {content.skills.map((skill, index) => (
-            <li key={index}>
-              {skill.name} {"★".repeat(skill.rating) + "☆".repeat(5 - skill.rating)}
-            </li>
+            <li key={index}>{skill.name}</li>
           ))}
         </ul>
       </div>
