@@ -8,6 +8,7 @@ import {
   FaUserAlt,
   FaLightbulb,
   FaExternalLinkAlt,
+  FaFileDownload,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -29,6 +30,14 @@ interface JobExperience {
   responsibilities: string[];
 }
 
+interface PortfolioItem {
+  title: string;
+  description: string;
+  imageUrl: string;
+  link?: string;
+}
+
+
 interface Content {
   name: string;
   subtitle: string;
@@ -41,6 +50,7 @@ interface Content {
   hobbies: string[];
   abilities: string[];
   experience: JobExperience[];
+  portfolio: PortfolioItem[];
 }
 
 const textContent: Record<string, Content> = {
@@ -119,6 +129,20 @@ const textContent: Record<string, Content> = {
         ],
       },
     ],
+    portfolio: [
+      {
+        title: "งานออกแบบอีเวนต์",
+        description: "แบรนด์ดิ้งและสื่อสำหรับงานอีเวนต์องค์กร",
+        imageUrl: "/example-1.png",
+        link: "https://www.canva.com/design/DAGNvCSxQlE/1A-jsiWoC4HKNdPZUrtX6Q/view?utm_content=DAGNvCSxQlE&utm_campaign=designshare&utm_medium=link&utm_source=editor#12"
+      },
+      {
+        title: "สื่อสิ่งพิมพ์ดิจิทัล",
+        description: "ออกแบบนิตยสารแบบอินเตอร์แอคทีฟ",
+        imageUrl: "example-2.png",
+        link: "https://www.canva.com/design/DAGNvCSxQlE/1A-jsiWoC4HKNdPZUrtX6Q/view?utm_content=DAGNvCSxQlE&utm_campaign=designshare&utm_medium=link&utm_source=editor#10"
+      }
+    ]
   },
   th: {
     name: "ธันยพร สุขท่าหิน",
@@ -174,6 +198,20 @@ const textContent: Record<string, Content> = {
         ],
       },
     ],
+    portfolio: [
+      {
+        title: "งานออกแบบอีเวนต์",
+        description: "แบรนด์ดิ้งและสื่อสำหรับงานอีเวนต์องค์กร",
+        imageUrl: "/example-1.png",
+        link: "https://www.canva.com/design/DAGNvCSxQlE/1A-jsiWoC4HKNdPZUrtX6Q/view?utm_content=DAGNvCSxQlE&utm_campaign=designshare&utm_medium=link&utm_source=editor#12"
+      },
+      {
+        title: "สื่อสิ่งพิมพ์ดิจิทัล",
+        description: "ออกแบบนิตยสารแบบอินเตอร์แอคทีฟ",
+        imageUrl: "example-2.png",
+        link: "https://www.canva.com/design/DAGNvCSxQlE/1A-jsiWoC4HKNdPZUrtX6Q/view?utm_content=DAGNvCSxQlE&utm_campaign=designshare&utm_medium=link&utm_source=editor#10"
+      }
+    ]
   }
 };
 
@@ -236,12 +274,25 @@ const Profile: React.FC = () => {
             {content.contact.phone}
           </a>
         </p>
+
         <p className="mt-2 text-gray-600 flex items-center justify-center">
           <FaEnvelope className="mr-2" />
           <a href={`mailto:${content.contact.email}`} className="text-blue-500">
             {content.contact.email}
           </a>
         </p>
+        <div className="flex justify-center  mt-3">
+          <motion.div className="w-fit">
+            <a
+              href={language === "en" ? "/cv-en.pdf" : "/cv-th.pdf"}
+              target="_blank"
+              className="bg-blue-300 hover:bg-blue-400 px-3 py-1 rounded-lg flex items-center space-x-2"
+            >
+              <FaFileDownload size={14} />
+              <span>{language === "en" ? "Download CV" : "ดาวน์โหลด CV"}</span>
+            </a>
+          </motion.div>
+        </div>
       </div>
 
       {/* Education */}
@@ -310,6 +361,40 @@ const Profile: React.FC = () => {
             <li key={index}>{ability}</li>
           ))}
         </ul>
+      </div>
+      <div>
+        <h2 className="text-2xl font-semibold text-gray-700 flex items-center">
+          <FaPaintBrush className="mr-2" />
+          {language === "en" ? "Portfolio Examples" : "ตัวอย่างผลงาน"}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          {content.portfolio.map((item, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-50 p-4 rounded-lg"
+            >
+              <img
+                src={item.imageUrl}
+                alt={item.title}
+                className="w-full h-48 object-cover rounded-lg mb-2"
+              />
+              <h3 className="font-semibold">{item.title}</h3>
+              <p className="text-gray-600 text-sm">{item.description}</p>
+              {item.link && (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 text-sm flex items-center mt-2"
+                >
+                  {language === "en" ? "View Project" : "ดูโปรเจค"}
+                  <FaExternalLinkAlt size={12} className="ml-1" />
+                </a>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
